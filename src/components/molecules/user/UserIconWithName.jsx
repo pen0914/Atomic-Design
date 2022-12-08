@@ -1,7 +1,15 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserProvider";
 
 export const UserIconWithName = (props) => {
-  const { image, name, isAdmin } = props;
+  const { image, name } = props;
+  //useContextが取り出してくるのは,
+  //creatContextで作られたどのタグか引数で判断
+  const { userInfo } = useContext(UserContext);
+  //isAdminに真値が渡されているか.ムダなバグを無くす対策
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
+
   return (
     <SContainer>
       <SItem height={160} width={160} src={image} alt={name} />
