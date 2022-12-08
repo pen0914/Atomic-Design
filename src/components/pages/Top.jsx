@@ -4,8 +4,10 @@ import { useHistory } from "react-router-dom";
 
 export const Top = () => {
   const history = useHistory();
-  const onClickAdmin = () => history.pushState("/users");
-  const onClickGeneral = () => alert("一般");
+  const onClickAdmin = () =>
+    history.push({ pathname: "/users", state: { isAdmin: true } });
+  const onClickGeneral = () =>
+    history.push({ pathname: "/users", state: { isAdmin: false } });
   return (
     <SContainer>
       <h2>TOPページです</h2>
