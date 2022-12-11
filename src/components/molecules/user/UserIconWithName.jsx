@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { UserContext } from "../../../providers/UserProvider";
 
-export const UserIconWithName = (props) => {
+export const UserIconWithName = memo((props) => {
+  console.log("userIcon");
   const { image, name } = props;
   //useContextが取り出してくるのは,
   //creatContextで作られたどのタグか引数で判断
@@ -17,7 +18,7 @@ export const UserIconWithName = (props) => {
       {isAdmin && <SEdit>編集</SEdit>}
     </SContainer>
   );
-};
+});
 
 const SContainer = styled.div`
   text-align: center;
