@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import { memo, useContext } from "react";
-import { UserContext } from "../../../providers/UserProvider";
+import { memo } from "react";
+import { useRecoilValue } from "recoil";
+//import { UserContext } from "../../../providers/UserProvider";
+import { userState } from "../../../store/userState";
 
 export const UserIconWithName = memo((props) => {
   console.log("userIcon");
   const { image, name } = props;
   //useContextが取り出してくるのは,
   //creatContextで作られたどのタグか引数で判断
-  const { userInfo } = useContext(UserContext);
+  //const { userInfo } = useContext(UserContext);
+  const userInfo = useRecoilValue(userState);
   //isAdminに真値が渡されているか.ムダなバグを無くす対策
   const isAdmin = userInfo ? userInfo.isAdmin : false;
 
